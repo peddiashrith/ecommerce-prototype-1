@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <body>
+    <h1>Hello {{request.user.username}}</h1>
+    <hr />
+    <h3>This is Dashboard</h3>
+    <hr />
+    <a href="{% url 'logout' %}">Logout</a>
+    <hr />
+    <a href="">Add role?</a>
+  </body>
+</html>
