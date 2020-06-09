@@ -25,7 +25,7 @@ SECRET_KEY = '@=gxv-g+lu26bs3car+gq-3a(*(_7xghz*_+rtmo_ohr_p@)ty'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["ecommerce-prototype-1.herokuapp.com", '127.0.0.1']
+ALLOWED_HOSTS = ["ecommerce-prototype-1.herokuapp.com", '127.0.0.1','ecommerce-prototyp1.herokuapp.com']
 
 
 # Application definition
