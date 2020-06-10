@@ -39,13 +39,13 @@ class userlogin(APIView):
         username = mydata["username"]
         fetch_user = User.objects.filter(username=username)
         if len(fetch_user) == 0:
-            return Response(status.HTTP_403_FORBIDDEN)
+            return Response({'login': 'invalid'})
         else:
             myuser = fetch_user[0]
             if myuser.username == mydata["username"] and myuser.password == mydata["password"]:
-                return Response(status.HTTP_202_ACCEPTED)
+                return Response({'login': 'success'})
             else:
-                return Response(status.HTTP_403_FORBIDDEN)
+                return Response({'login': 'invalid'})
 
 
 class userDetail(APIView):
