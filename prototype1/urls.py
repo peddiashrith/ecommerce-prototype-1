@@ -22,5 +22,6 @@ urlpatterns = [
     path('api/', include(apirouter.urls)),
     path('', include('users.urls')),
     path('userlistapi/', apiviews.userList.as_view()),
+    path('userloginapi/', apiviews.userlogin.as_view()),
     path('userlistapi/<int:id>', apiviews.userDetail.as_view()),
 ]

@@ -26,6 +26,28 @@ class userList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class userlogin(APIView):
+    def get(self, request):
+        allusers = User.objects.all()
+        myserializer = userSerializer(allusers, many=True)
+        return Response(myserializer.data)
+
+    def post(self, request):
+        serializer = userSerializer(data=request.data)
+        mydata = serializer.initial_data
+        print(mydata)
+        username = mydata["username"]
+        fetch_user = User.objects.filter(username=username)
+        if len(fetch_user) == 0:
+            return Response(status.HTTP_403_FORBIDDEN)
+        else:
+            myuser = fetch_user[0]
+            if myuser.username == mydata["username"] and myuser.password == mydata["password"]:
+                return Response(status.HTTP_202_ACCEPTED)
+            else:
+                return Response(status.HTTP_403_FORBIDDEN)
+
+
 class userDetail(APIView):
     def get_object(self, id):
         return get_object_or_404(User, id=id)
