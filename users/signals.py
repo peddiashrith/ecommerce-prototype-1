@@ -22,7 +22,11 @@ def create_profile(sender, instance, created, **kwargs):
         print("----------------------vendorhead is: ",
               instance._vendorhead, "------------------------------------")
         vendorhead = User.objects.get(username=instance._vendorhead)
-        profile.objects.create(user=instance, head=vendorhead)
+        
+        try:
+            p = request.instance.profile
+        except:
+            profile.objects.create(user=instance, head=vendorhead)
         # for many to many field use add
         instance.profile.roles.add(myrole)
         print("Profile Created!")
